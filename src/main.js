@@ -5,8 +5,9 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from './App.vue';
-import Login from './components/views/Login.vue';
-import Register from './components/views/Register.vue';
+import Login from './views/Login.vue';
+import Register from './views/Register.vue';
+import Dashboard from './views/Dashboard.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -17,6 +18,10 @@ const router = createRouter({
         {
             path: '/register',
             component: Register
+        },
+        {
+            path: '/dashboard',
+            component: Dashboard
         }
     ]
 });
