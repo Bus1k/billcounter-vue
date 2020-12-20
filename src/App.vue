@@ -1,5 +1,4 @@
 <template>
-  <h1>TEST</h1>
   <router-view></router-view>
 </template>
 
@@ -13,4 +12,9 @@ export default {
 </script>
 
 <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 </style>
