@@ -76,7 +76,9 @@
                     </div>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block">Create</button>
+                <base-button type="submit" classes="btn-lg btn-primary">
+                    Create
+                </base-button>
                 <a href="/login">Back</a>
             </form>
         </div>
@@ -85,8 +87,10 @@
 
 <script>
 import auth from "../api/auth";
+import BaseButton from "../components/UI/BaseButton.vue";
 
 export default {
+    components: { BaseButton },
     data() {
         return {
             formData: {

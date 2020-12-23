@@ -1,5 +1,6 @@
 <template>
     <div id="login" class="text-center">
+        <base-alert type="success">TEST</base-alert>
         <img class="pb-5" src="../assets/logo.svg" alt="" width="300" />
         <h1 class="h3 mb-3">Please sign in</h1>
         <div class="login-form">
@@ -27,10 +28,9 @@
                     />
                     <label for="loginPassword">Password</label>
                 </div>
-
-                <button class="btn btn-lg btn-primary btn-block">
+                <base-button type="submit" classes="btn-lg btn-primary">
                     Sign in
-                </button>
+                </base-button>
                 <a href="/register">Create Account</a>
             </form>
         </div>
@@ -46,8 +46,11 @@
 
 <script>
 import auth from "../api/auth";
+import BaseButton from "../components/UI/BaseButton.vue";
+import BaseAlert from "../components/UI/BaseAlert.vue";
 
 export default {
+    components: { BaseButton, BaseAlert },
     data() {
         return {
             formData: {
