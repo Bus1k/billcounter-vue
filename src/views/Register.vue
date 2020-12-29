@@ -1,5 +1,5 @@
 <template>
-    <div id="register" class="text-center">
+    <base-card id="register">
         <img class="pb-5" src="../assets/logo.svg" alt="" width="300" />
         <h1 class="h3 mb-3">Create Account</h1>
         <div class="register-form">
@@ -7,7 +7,7 @@
                 @submit.prevent="createAccount"
                 :class="errors.length > 0 ? 'was-validated' : ''"
             >
-                <div class="form-floating mb-3">
+                <div class="form-control">
                     <input
                         type="text"
                         class="form-control"
@@ -17,13 +17,12 @@
                         required
                         v-model="formData.name"
                     />
-                    <label for="name">Name</label>
                     <div class="invalid-feedback" v-if="errors.name">
                         {{ errors.name[0] }}
                     </div>
                 </div>
 
-                <div class="form-floating mb-3">
+                <div class="form-control">
                     <input
                         type="email"
                         class="form-control"
@@ -33,13 +32,12 @@
                         required
                         v-model="formData.email"
                     />
-                    <label for="email">Email</label>
                     <div class="invalid-feedback" v-if="errors.email">
                         {{ errors.email[0] }}
                     </div>
                 </div>
 
-                <div class="form-floating mb-3">
+                <div class="form-control">
                     <input
                         type="password"
                         class="form-control"
@@ -49,13 +47,12 @@
                         required
                         v-model="formData.password"
                     />
-                    <label for="password">Password</label>
                     <div class="invalid-feedback" v-if="errors.password">
                         {{ errors.password[0] }}
                     </div>
                 </div>
 
-                <div class="form-floating mb-3">
+                <div class="form-control">
                     <input
                         type="password"
                         class="form-control"
@@ -67,7 +64,6 @@
                         required
                         v-model="formData.password_confirmation"
                     />
-                    <label for="passwordConfirmation">Confirm Password</label>
                     <div
                         class="invalid-feedback"
                         v-if="errors.password_confirmation"
@@ -75,14 +71,15 @@
                         {{ errors.password_confirmation[0] }}
                     </div>
                 </div>
-
-                <base-button type="submit" classes="btn-lg btn-primary">
-                    Create
-                </base-button>
-                <a href="/login">Back</a>
+                <div class="actions">
+                    <base-button type="submit" classes="blue">
+                        Create
+                    </base-button>
+                    <a href="/login">Back</a>
+                </div>
             </form>
         </div>
-    </div>
+    </base-card>
 </template>
 
 <script>
@@ -106,7 +103,10 @@ export default {
         createAccount() {
             auth.create(this.formData)
                 .then(() => {
-                    this.$router.push({ name: "Login" });
+                    this.$router.push({
+                        name: "Login",
+                        query: { msg: "registerSuccess" },
+                    });
                 })
                 .catch((error) => {
                     if (error.response.status === 400) {
@@ -118,4 +118,49 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+img {
+    align-self: center;
+    margin: 2rem 0 2.8rem 0;
+}
+
+h1 {
+    align-self: center;
+    font-weight: 100;
+    margin: 0 0 1rem 0;
+}
+
+div .register-form {
+    align-self: center;
+    width: 80%;
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    margin-top: 1.5rem;
+    font-size: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+.actions {
+    margin-top: 1.8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.actions .btn {
+    padding: 0.7rem;
+}
+.actions a {
+    margin-top: 1rem;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 0.8rem;
+}
+</style>

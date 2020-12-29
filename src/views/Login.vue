@@ -1,37 +1,34 @@
 <template>
-    <div id="login" class="text-center">
-        <base-alert type="success">TEST</base-alert>
-        <img class="pb-5" src="../assets/logo.svg" alt="" width="300" />
-        <h1 class="h3 mb-3">Please sign in</h1>
+    <base-card id="login">
+        <img src="../assets/logo.svg" alt="" width="300" />
+        <h1>Please sign in</h1>
         <div class="login-form">
             <form @submit.prevent="handleLogin">
-                <div class="form-floating mb-3">
+                <div class="form-control">
                     <input
                         type="email"
-                        class="form-control"
                         id="loginEmail"
                         placeholder="name@example.com"
                         required
                         v-model="formData.email"
                     />
-                    <label for="loginEmail">Email address</label>
                 </div>
 
-                <div class="form-floating">
+                <div class="form-control">
                     <input
                         type="password"
-                        class="form-control"
                         id="loginPassword"
                         placeholder="Password"
                         required
                         v-model="formData.password"
                     />
-                    <label for="loginPassword">Password</label>
                 </div>
-                <base-button type="submit" classes="btn-lg btn-primary">
-                    Sign in
-                </base-button>
-                <a href="/register">Create Account</a>
+                <div class="actions">
+                    <base-button type="submit" classes="blue">
+                        Sign in
+                    </base-button>
+                    <a href="/register">Create Account</a>
+                </div>
             </form>
         </div>
         <div class="errors" v-if="errors">
@@ -41,22 +38,20 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </base-card>
 </template>
 
 <script>
 import auth from "../api/auth";
-import BaseButton from "../components/UI/BaseButton.vue";
-import BaseAlert from "../components/UI/BaseAlert.vue";
 
 export default {
-    components: { BaseButton, BaseAlert },
     data() {
         return {
             formData: {
                 email: "",
                 password: "",
             },
+            flashMsg: "",
             errors: [],
         };
     },
@@ -73,8 +68,50 @@ export default {
                     }
                 });
         },
+        handleRegister() {},
     },
 };
 </script>
 
-<style></style>
+<style scoped>
+img {
+    align-self: center;
+    margin: 2rem 0 2.8rem 0;
+}
+
+h1 {
+    align-self: center;
+    font-weight: 100;
+    margin: 0 0 2rem 0;
+}
+
+div .login-form {
+    align-self: center;
+    width: 80%;
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    margin-bottom: 1.5rem;
+    font-size: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.actions {
+    margin-top: 1.8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.actions .btn {
+    padding: 0.7rem;
+}
+.actions a {
+    margin-top: 1rem;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
+    <div id="navbar">
+        <div>
             <h5 class="text-white h4">Bill Counter</h5>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
@@ -16,21 +16,6 @@
             </ul>
         </div>
     </div>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarToggleExternalContent"
-                aria-controls="navbarToggleExternalContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
 </template>
 
 <script>

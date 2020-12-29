@@ -1,19 +1,16 @@
 <template>
-    <Navbar />
-    <bill-table />
-    <section id="main"></section>
+    <TheNavbar />
+    <BillTable />
 </template>
 
 <script>
-import Navbar from "@/components/nav/Navbar.vue";
+import TheNavbar from "../components/layout/TheNavbar.vue";
 import BillTable from "../components/dashboard/BillTable.vue";
 
 export default {
     components: {
-        Navbar,
+        TheNavbar,
         BillTable,
     },
 };
 </script>
-
-<style></style>

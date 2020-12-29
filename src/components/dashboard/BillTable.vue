@@ -1,4 +1,7 @@
 <template>
+    <base-button classes="btn-lg btn-success btn-block">
+        Add Bill
+    </base-button>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -25,11 +28,10 @@
             </tr>
         </tbody>
     </table>
-    <button class="btn btn-lg btn-primary btn-block" @click="getAll"></button>
 </template>
 
 <script>
-import bills from "../../api/bills";
+import bills from "../../api/bills.js";
 
 export default {
     data() {
@@ -54,6 +56,9 @@ export default {
                 this.items = response.data;
             });
         },
+    },
+    beforeMount() {
+        this.getAll();
     },
 };
 </script>
